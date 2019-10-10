@@ -1,0 +1,9 @@
+# processing environment
+*/build
+examples
+libraries
+modes
+templates
+tools
+*/.vscode
+*/out
