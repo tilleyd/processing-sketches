@@ -11,6 +11,7 @@ class World {
 
     private HashMap<Integer, Boolean> _keys;
     private LinkedList<Follower> _followers;
+    private LinkedList<Entity> _entities;
     private LinkedList<Obstacle> _obst;
     private Player _player;
     private Layout _layout;
@@ -19,6 +20,7 @@ class World {
     public World() {
         _keys = new HashMap<Integer, Boolean>();
         _followers = new LinkedList<Follower>();
+        _entities = new LinkedList<Entity>();
         _obst = new LinkedList<Obstacle>();
         _targetEn = false;
     }
@@ -30,9 +32,15 @@ class World {
     public LinkedList<Obstacle> getObstacles() {
         return _obst;
     }
+    
+    public LinkedList<Entity> getEntities() {
+        return _entities;
+    }
 
     public void addFollower(float x, float y) {
-        _followers.add(new Follower(this, x, y));
+        Follower follower = new Follower(this, x, y);
+        _followers.add(follower);
+        _entities.add(follower);
     }
 
     public void addObstacle(float x, float y) {
@@ -41,6 +49,7 @@ class World {
 
     public void createPlayer(float x, float y, int rows, int cols) {
         _player = new Player(this, x, y);
+        _entities.add(_player);
         _layout = new Layout(this, _player, rows, cols);
     }
 

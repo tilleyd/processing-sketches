@@ -51,10 +51,10 @@ class Follower extends Entity {
 
 
         // find near entities
-        LinkedList<Follower> all = _w.getFollowers();
+        LinkedList<Entity> all = _w.getEntities();
         it = all.iterator();
         while (it.hasNext()) {
-            Follower b = (Follower)it.next();
+            Entity b = (Entity)it.next();
             if (b == this) {
                 continue;
             }
